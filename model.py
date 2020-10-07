@@ -6,7 +6,6 @@ class gaze_network(nn.Module):
     def __init__(self, use_face=False, num_glimpses=1):
         super(gaze_network, self).__init__()
         self.gaze_network = resnet50(pretrained=True)
-        self.gaze_network = nn.DataParallel(self.gaze_network)
 
         self.gaze_fc = nn.Sequential(
             nn.Linear(2048, 2),

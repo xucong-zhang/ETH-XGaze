@@ -14,6 +14,7 @@ def run(config):
         torch.backends.cudnn.deterministic = True
         torch.backends.cudnn.benchmark = False
         torch.manual_seed(0)
+        np.random.seed(0)
         kwargs = {'num_workers': config.num_workers, 'is_shuffle': config.shuffle}
 
     # instantiate data loaders
