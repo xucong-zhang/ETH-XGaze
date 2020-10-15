@@ -128,13 +128,12 @@ if __name__ == '__main__':
     face_model_load = np.loadtxt('face_model.txt')  # Generic face model with 3D facial landmarks
     landmark_use = [20, 23, 26, 29, 15, 19]  # we use eye corners and nose conners
     face_model = face_model_load[landmark_use, :]
-    # estimate the head pose
-    ## the complex way to get head pose information, eos library is required
+    # estimate the head pose,
+    ## the complex way to get head pose information, eos library is required,  probably more accurrated
     # landmarks = landmarks.reshape(-1, 2)
     # head_pose_estimator = HeadPoseEstimator()
     # hr, ht, o_l, o_r, _ = head_pose_estimator(image, landmarks, camera_matrix[cam_id])
-
-    ## the easy way to get head pose information
+    ## the easy way to get head pose information, fast and simple
     facePts = face_model.reshape(6, 1, 3)
     landmarks_sub = landmarks[[36, 39, 42, 45, 31, 35], :]
     landmarks_sub = landmarks_sub.astype(float)  # input to solvePnP function must be float type
@@ -155,21 +154,22 @@ if __name__ == '__main__':
     else:
         print('load the pre-trained model: ', pre_trained_model_path)
     ckpt = torch.load(pre_trained_model_path)
-    model.load_state_dict(ckpt['model_state'], strict=True)
+    model.load_state_dict(ckpt['model_state'], strict=True)  # load the pre-trained model
+    model.eval()  # change it to the evaluation mode
     input_var = img_normalized[:, :, [2, 1, 0]]  # from BGR to RGB
     input_var = trans(input_var)
     input_var = torch.autograd.Variable(input_var.float().cuda())
     input_var = input_var.view(1, input_var.size(0), input_var.size(1), input_var.size(2))  # the input must be 4-dimension
-    pred_gaze = model(input_var)
+    pred_gaze = model(input_var)  # get the output gaze direction, this is 2D output as pitch and raw rotation
     pred_gaze = pred_gaze[0] # here we assume there is only one face inside the image, then the first one is the prediction
-    pred_gaze_np = pred_gaze.cpu().data.numpy()
+    pred_gaze_np = pred_gaze.cpu().data.numpy()  # convert the pytorch tensor to numpy array
 
     print('prepare the output')
     # draw the facial landmarks
     landmarks_normalized = landmarks_normalized.astype(int) # landmarks after data normalization
     for (x, y) in landmarks_normalized:
         cv2.circle(img_normalized, (x, y), 5, (0, 255, 0), -1)
-    face_patch_gaze = draw_gaze(img_normalized, pred_gaze_np)
+    face_patch_gaze = draw_gaze(img_normalized, pred_gaze_np)  # draw gaze direction on the normalized face image
     output_path = 'example/output/results_gaze.jpg'
     print('save output image to: ', output_path)
     cv2.imwrite(output_path, face_patch_gaze)
