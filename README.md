@@ -10,6 +10,7 @@ The code is under the license of [CC BY-NC-SA 4.0 license](https://creativecommo
 ## Requirement
 * Python 3.5
 * Pytorch 1.1.0, torchvision
+* opencv-python
 #### For model training
 * h5py to load the training data
 * configparser
