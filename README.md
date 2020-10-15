@@ -24,7 +24,7 @@ The code is under the license of [CC BY-NC-SA 4.0 license](https://creativecommo
 ## Test
 The demo.py files show how to perform the gaze estimation from input image. The example image is already in 'example/input' folder.
 - First, you need to download the [pre-trained model](https://drive.google.com/file/d/1Ma6zJrECNTjo_mToZ5GKk7EF-0FS4nEC/view?usp=sharing), and put it under "ckpt" folder.
-- And then, run the 'python demo.py' for testing.
+- And then, run the 'python demo.py' for test.
 
 ## Citation
 If using this code-base and/or the ETH-XGaze dataset in your research, please cite the following publication:
