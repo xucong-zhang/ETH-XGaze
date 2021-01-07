@@ -27,6 +27,9 @@ The demo.py files show how to perform the gaze estimation from input image. The 
 - First, you need to download the [pre-trained model](https://drive.google.com/file/d/1Ma6zJrECNTjo_mToZ5GKk7EF-0FS4nEC/view?usp=sharing), and put it under "ckpt" folder.
 - And then, run the 'python demo.py' for test.
 
+## Data normalization
+The 'normalization_example.py' gives the example of data normalization from the raw dataset to the normalized data.
+
 ## Citation
 If using this code-base and/or the ETH-XGaze dataset in your research, please cite the following publication:
 
