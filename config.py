@@ -21,8 +21,6 @@ data_arg.add_argument('--batch_size', type=int, default=50,
                       help='# of images in each batch of data')
 data_arg.add_argument('--num_workers', type=int, default=5,
                       help='# of subprocesses to use for data loading')
-data_arg.add_argument('--shuffle', type=str2bool, default=True,
-                      help='Whether to shuffle the train and valid indices')
 
 
 # training params
