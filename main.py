@@ -15,12 +15,12 @@ def run(config):
         torch.backends.cudnn.benchmark = False
         torch.manual_seed(0)
         np.random.seed(0)
-        kwargs = {'num_workers': config.num_workers, 'is_shuffle': config.shuffle}
+        kwargs = {'num_workers': config.num_workers}
 
     # instantiate data loaders
     if config.is_train:
         data_loader = get_train_loader(
-            config.data_dir, config.batch_size,
+            config.data_dir, config.batch_size, is_shuffle=True
             **kwargs
         )
     else:
