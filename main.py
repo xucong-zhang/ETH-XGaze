@@ -25,7 +25,7 @@ def run(config):
         )
     else:
         data_loader = get_test_loader(
-            config.data_dir, config.batch_size,
+            config.data_dir, config.batch_size, is_shuffle=False,
             **kwargs
         )
     # instantiate trainer
