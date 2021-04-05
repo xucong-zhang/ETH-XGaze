@@ -42,7 +42,7 @@ If using this code-base and/or the ETH-XGaze dataset in your research, please ci
 
 ## FAQ
 **Q: Where are the test set labels?**<br/>
-We plan to make evaluations on the test set possible as soon as possible via a web service with a public leaderboard. In this way, we strive to make evaluations on our test set consistent and reliable, and encourage competition in the field of video-based gaze estimation.
+You can submit your test result to our leaderboard and get the results. Please do follow the registration first, otherwiese, your request will be ignored. [Link to the leaderboard](https://competitions.codalab.org/competitions/28930).
 
 **Q: What is the data normalization?**<br/>
 As we wrote in our paper, data normalization is a method to crop the face/eye image without head rotation around the roll axis. Please refer to the following paper for details: [Revisiting Data Normalization for Appearance-Based Gaze Estimation](https://www.perceptualui.org/publications/zhang18_etra.pdf)
