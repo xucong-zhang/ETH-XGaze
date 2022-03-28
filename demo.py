@@ -102,7 +102,7 @@ if __name__ == '__main__':
     predictor = dlib.shape_predictor('./modules/shape_predictor_68_face_landmarks.dat')
     # face_detector = dlib.cnn_face_detection_model_v1('./modules/mmod_human_face_detector.dat')
     face_detector = dlib.get_frontal_face_detector()  ## this face detector is not very powerful
-    detected_faces = face_detector(image, 1)
+    detected_faces = face_detector(cv2.cvtColor(image, cv2.COLOR_BGR2RGB), 1) ## convert BGR image to RGB for dlib
     if len(detected_faces) == 0:
         print('warning: no detected face')
         exit(0)
