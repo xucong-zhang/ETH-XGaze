@@ -249,7 +249,7 @@ if __name__ == '__main__':
         total_data = 0
         with open(label_path) as f:
             total_data = sum(1 for line in f)
-            print('There are in total ', total_data, ' samples')
+        print('There are in total ', total_data, ' samples')
 
         save_index = 0
         frame_index = 0
@@ -266,9 +266,9 @@ if __name__ == '__main__':
 
                 if frame_index % report_interval==0 and cam_id==0:
                     print('process the ', os.path.join(subject_folder, frame_folder))
-                    precet = frame_index / total_data * 100
+                    precet = save_index / total_data * 100
                     batch_time = time.time() - start_time_batch
-                    left_time = batch_time * ((total_data - frame_index) / report_interval)
+                    left_time = batch_time * ((total_data - save_index) / report_interval)
                     print('Processed {:01} %, ETA {:02d}:{:02d}:{:02d}'.format(precet, int(left_time // 3600),
                                                                         int(left_time % 3600 // 60),
                                                                         int(left_time % 60)))
@@ -305,21 +305,21 @@ if __name__ == '__main__':
                 # img_normalized = cv2.resize(img_normalized_ori, (224, 224), interpolation=cv2.INTER_AREA)  #if you want the 224 * 224 image size
                 # create the hdf5 file
                 if not output_frame_index:
-                    output_frame_index = output_h5_id.create_dataset("frame_index", shape=(total_data * 18, 1),
+                    output_frame_index = output_h5_id.create_dataset("frame_index", shape=(total_data, 1),
                                                                    dtype=np.int, chunks=(1, 1))
-                    output_cam_index = output_h5_id.create_dataset("cam_index", shape=(total_data * 18, 1),
+                    output_cam_index = output_h5_id.create_dataset("cam_index", shape=(total_data, 1),
                                                                      dtype=np.int, chunks=(1, 1))
-                    output_landmarks = output_h5_id.create_dataset("facial_landmarks", shape=(total_data * 18, 68, 2),
+                    output_landmarks = output_h5_id.create_dataset("facial_landmarks", shape=(total_data, 68, 2),
                                                                    dtype=np.float, chunks=(1, 68, 2))
 
-                    output_face_patch = output_h5_id.create_dataset("face_patch", shape=(total_data * 18, face_patch_size, face_patch_size, 3),
+                    output_face_patch = output_h5_id.create_dataset("face_patch", shape=(total_data, face_patch_size, face_patch_size, 3),
                                                                     compression='lzf', dtype=np.uint8,
                                                                     chunks=(1, face_patch_size, face_patch_size, 3))
-                    output_face_mat_norm = output_h5_id.create_dataset("face_mat_norm", shape=(total_data * 18, 3, 3),
+                    output_face_mat_norm = output_h5_id.create_dataset("face_mat_norm", shape=(total_data, 3, 3),
                                                                    dtype=np.float, chunks=(1, 3, 3))
-                    output_face_gaze = output_h5_id.create_dataset("face_gaze", shape=(total_data * 18, 2),
+                    output_face_gaze = output_h5_id.create_dataset("face_gaze", shape=(total_data, 2),
                                                                    dtype=np.float, chunks=(1, 2))
-                    output_face_head_pose = output_h5_id.create_dataset("face_head_pose", shape=(total_data * 18, 2),
+                    output_face_head_pose = output_h5_id.create_dataset("face_head_pose", shape=(total_data, 2),
                                                                         dtype=np.float, chunks=(1, 2))
 
 
