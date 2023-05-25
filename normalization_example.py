@@ -14,19 +14,6 @@ import io
 
 from datetime import datetime
 
-
-def draw_gaze(image_in, pos, pitchyaw, length=40.0, thickness=1, color=(0, 0, 255)):
-    """Draw gaze angle on given image with a given eye positions."""
-    image_out = image_in
-    if len(image_out.shape) == 2 or image_out.shape[2] == 1:
-        image_out = cv2.cvtColor(image_out, cv2.COLOR_GRAY2BGR)
-    dx = -length * np.sin(pitchyaw[1]) * np.cos(pitchyaw[0])
-    dy = -length * np.sin(pitchyaw[0])
-    cv2.arrowedLine(image_out, tuple(np.round(pos).astype(np.int32)),
-                   tuple(np.round([pos[0] + dx, pos[1] + dy]).astype(int)), color,
-                   thickness, cv2.LINE_AA, tipLength=0.2)
-    return image_out
-
 def vector_to_pitchyaw(vectors):
     n = vectors.shape[0]
     out = np.empty((n, 2))
