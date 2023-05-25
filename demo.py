@@ -29,8 +29,8 @@ def draw_gaze(image_in, pitchyaw, thickness=2, color=(0, 0, 255)):
     """Draw gaze angle on given image with a given eye positions."""
     image_out = image_in
     (h, w) = image_in.shape[:2]
-    length = w / 2.0
-    pos = (int(h / 2.0), int(w / 2.0))
+    length = np.min([h, w]) / 2.0
+    pos = (int(w / 2.0), int(h / 2.0))
     if len(image_out.shape) == 2 or image_out.shape[2] == 1:
         image_out = cv2.cvtColor(image_out, cv2.COLOR_GRAY2BGR)
     dx = -length * np.sin(pitchyaw[1]) * np.cos(pitchyaw[0])
