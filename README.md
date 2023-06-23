@@ -2,7 +2,7 @@
 Official implementation of ETH-XGaze dataset baseline.
 
 ## ETH-XGaze dataset
-ETH-XGaze dataset is a gaze estimation dataset consisting of over one million high-resolution images of varying gaze under extreme head poses. We established a simple baseline test on our ETH-XGaze dataset and other datasets. This repository includes the code and pre-trained model. Please find more details about the dataset on our [project page](https://ait.ethz.ch/projects/2020/ETH-XGaze/).
+ETH-XGaze dataset is a gaze estimation dataset consisting of over one million high-resolution images of varying gaze under extreme head poses. We established a simple baseline test on our ETH-XGaze dataset and other datasets. This repository includes the code and pre-trained model. Please find more details about the dataset on our [project page](https://ait.ethz.ch/xgaze).
 
 ## License
 The code is under the license of [CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
@@ -18,7 +18,7 @@ The code is under the license of [CC BY-NC-SA 4.0 license](https://creativecommo
 * dlib for face and facial landmark detection.
 
 ## Training
-- You need to download the [ETH-XGaze](https://ait.ethz.ch/projects/2020/ETH-XGaze/) dataset for training. After downloading the data, make sure it is the version of pre-processed 224*224 pixels face patch. Put the data under '\data\xgaze'
+- You need to download the [ETH-XGaze](https://ait.ethz.ch/xgaze) dataset for training. After downloading the data, make sure it is the version of pre-processed 224*224 pixels face patch. Put the data under '\data\xgaze'
 - Run the `python main.py` to train the model
 - The model will be saved under 'ckpt' folder.
 
