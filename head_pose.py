@@ -37,7 +37,7 @@ class HeadPoseEstimator(object):
 
     def __init__(self):
         cwd = os.path.dirname(__file__)
-        base_dir = '/local/home/xucong/project/GGD/lib' + '/eos'
+        base_dir = './lib' + '/eos'
 
         # Morphable model definition
         model = eos.morphablemodel.load_model(base_dir + '/share/sfm_shape_3448.bin')
@@ -187,7 +187,7 @@ class PnPHeadPoseEstimator(object):
     def __init__(self):
         # Load and extract vertex positions for selected landmarks
         cwd = os.path.dirname(__file__)
-        base_dir = '/local/home/xucong/project/GGD/lib' + '/eos'
+        base_dir = './lib' + '/eos'
         self.model = eos.morphablemodel.load_model(
             base_dir + '/share/sfm_shape_3448.bin')
         self.shape_model = self.model.get_shape_model()
