@@ -46,7 +46,8 @@ If using this code-base and/or the ETH-XGaze dataset in your research, please ci
 You can submit your test result to our leaderboard and get the results. Please do follow the registration first, otherwiese, your request will be ignored. [Link to the leaderboard](https://competitions.codalab.org/competitions/28930). Please do note the order of the subjects in the configuration file.
 
 **Q: What is the data normalization?**<br/>
-As we wrote in our paper, data normalization is a method to crop the face/eye image without head rotation around the roll axis. Please refer to the following paper for details: [Revisiting Data Normalization for Appearance-Based Gaze Estimation](https://www.perceptualui.org/publications/zhang18_etra.pdf)
+As we wrote in our paper, data normalization is a method to crop the face/eye image without head rotation around the roll axis. Please refer to the following paper for details: [Revisiting Data Normalization for Appearance-Based Gaze Estimation](https://www.perceptualui.org/publications/zhang18_etra.pdf).
+We also provide code to convert Gaze360, MPIIFaceGaze and ETH-XGaze datasets into the normalized space in [this repository](https://github.com/X-Shi/Data-Normalization-Gaze-Estimation).
 
 **Q: Why convert 3D gaze direction (vector) to 2D gaze direction (pitch and yaw)? How to convert between 3D and 2D gaze directions?**<br/>
 Essentially to say, 2D pitch and yaw is enough to describe the gaze direction in the head coordinate system, and using 2D instead of 3D could make the model training easier. There are code examples on how to convert between them in the "utils.py" file as `pitchyaw_to_vector` and `vector_to_pitchyaw`.
