@@ -20,7 +20,7 @@ def run(config):
     # instantiate data loaders
     if config.is_train:
         data_loader = get_train_loader(
-            config.data_dir, config.batch_size, is_shuffle=True
+            config.data_dir, config.batch_size, is_shuffle=True,
             **kwargs
         )
     else:
