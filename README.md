@@ -5,6 +5,10 @@ Official implementation of ETH-XGaze dataset baseline.
 ETH-XGaze dataset is a gaze estimation dataset consisting of over one million high-resolution images of varying gaze under extreme head poses. We established a simple baseline test on our ETH-XGaze dataset and other datasets. This repository includes the code and pre-trained model. Please find more details about the dataset on our [project page](https://ait.ethz.ch/xgaze).
 Please note this repository is not responding to the dataset download, and I will not respond to any dataset download request in this repository. Thank you for your understanding.
 
+## Update on June 2026
+After a discussion with the core members of the ETH-XGaze dataset team, we decided to release the test set labels. Therefore, the Codalab competition is not necessary anymore, as you can directly test the performance on the test set.
+Both the evaluation code and the test set labels are not under the folder "evaluation_test_set_person_specific_setting" and "evaluation_test_set_within_dataset_setting".
+
 ## License
 The code is under the license of [CC BY-NC-SA 4.0 license](https://creativecommons.org/licenses/by-nc-sa/4.0/)
 
